@@ -12,6 +12,14 @@ link: [React Native를 활용한 빠르고 완성도 높은 앱 개발 with 21�
   - npx create-expo-app helloworld
   - cd helloworld
   - npx expo start
+- [RN: Basic Components](https://reactnative.dev/docs/components-and-apis#basic-components)
+  - View
+  - Text
+  - Image
+  - TextInput
+  - ScrollView
+  - StyleSheet
 
 ## Reference
 - [Expo](https://docs.expo.dev/get-started/installation/)
+- [React Navitive - Core Components and APIs](https://reactnative.dev/docs/components-and-apis)
