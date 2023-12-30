@@ -19,6 +19,9 @@ link: [React Native를 활용한 빠르고 완성도 높은 앱 개발 with 21�
   - TextInput
   - ScrollView
   - StyleSheet
+- [RN: User Interface](https://reactnative.dev/docs/components-and-apis#user-interface)
+  - Button
+  - Switch
 
 ## Reference
 - [Expo](https://docs.expo.dev/get-started/installation/)

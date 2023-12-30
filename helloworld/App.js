@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, ScrollView, Button, Switch } from 'react-native';
 
 export default function App() {
   return (
@@ -14,6 +14,13 @@ export default function App() {
       }} style={styles.url_image} />
 
       <TextInput placeholder='이름을 입력해 주세요'></TextInput>
+
+      <Button title="Click Me!" onPress={() => {
+        console.log("clicked")
+      }} />
+
+      <Switch value={true} />
+      <Switch value={false} />
 
       <ScrollView>
       <Image source={require("helloworld/dog.jpeg")} style={styles.local_image} />
