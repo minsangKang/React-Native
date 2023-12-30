@@ -41,6 +41,53 @@ link: [React Native를 활용한 빠르고 완성도 높은 앱 개발 with 21�
       }
     }
     ```
+- [React: Hooks (UseState)](https://reactnative.dev/docs/intro-react#state)
+  - 함수형 hook
+    ```javascript
+    import React, { useState } from "react";
+    import { View, Text, Button, Switch, TextInput } from "react-native";
+
+    const Component = () => {
+        const [count, setCount] = useState(0);
+
+        return (
+            <View>
+                <Text>You clicked {count} times</Text>
+                <Button title="Click me" onPress={() => setCount(count + 1)} />
+            </View>
+        );
+    };
+
+    export default Component;
+    ```
+  - 클래스형 hook
+    ```javascript
+    import React from "react";
+    import { View, Text, Button } from "react-native";
+
+    class Component extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                count: 0,
+            };
+        }
+
+        render() {
+            return (
+                <View>
+                    <Text>You clicked {this.state.count} times</Text>
+                    <Button
+                        title="Click me"
+                        onPress={() => this.setState({ count: this.state.count + 1 })}
+                    />
+                </View>
+            );
+        }
+    }
+
+    export default Component;
+    ```
 
 ## Create RN Project (with Expo)
 ### Create Project
@@ -58,4 +105,5 @@ npx expo start
 ## Reference
 - [Expo](https://docs.expo.dev/get-started/installation/)
 - [React Navitive - Core Components and APIs](https://reactnative.dev/docs/components-and-apis)
-- [Components와 Props](https://ko.legacy.reactjs.org/docs/components-and-props.html)
+- [React - Components & Props](https://ko.legacy.reactjs.org/docs/components-and-props.html)
+- [React - State](https://reactnative.dev/docs/intro-react#state)
