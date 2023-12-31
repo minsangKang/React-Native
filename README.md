@@ -137,8 +137,9 @@ link: [React Native를 활용한 빠르고 완성도 높은 앱 개발 with 21�
       // componentWillUnmount
       ```
   - React: 컴포넌트 생명주기 (func - useEffect)
-    - useEffect를 통해 useState 값 변화를 감지, componentDidUpdate와 같지만, 변화된 state 값을 받음
-    - componentDidMount: useEffect 인자를 빈 값으로 설정
+    - 함수형 컴포넌트와 달리 constructor, render 및 didMount, willUnmount 부분이 없다.
+    - useEffect를 통해 useState의 변화된 값을 수신받아 didUpdate 역할을 할 수 있다.
+    - useEffect로 빈 값 설정을 통해 didMount 역할을 할 수 있다.
       ```javascript
       import React, { useEffect, useState } from "react";
       import { View, Text, Button, TextInput, Switch, ActivityIndicator } from "react-native";
@@ -168,6 +169,21 @@ link: [React Native를 활용한 빠르고 완성도 높은 앱 개발 with 21�
       export default Component;
       // didMount -> didUpdate - count 0
       // didUpdate - count 1
+      ```
+  - Custom Hook 만들기
+    - 반복적으로 사용되는 useState 생성 부분을 컴포넌트화
+    - 컴포넌트 이름이 'use'로 시작해야 한다.
+      ```javascript
+      const useInput = (initialValue) => {
+          const [value, setValue] = useState(initialValue);
+          const resetValue = () => setValue(initialValue);
+
+          return {
+              value,
+              setValue,
+              resetValue
+          }
+      }
       ```
 
     
