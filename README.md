@@ -214,6 +214,11 @@ link: [React Native를 활용한 빠르고 완성도 높은 앱 개발 with 21�
         )
     }
     ```
+- TabBar 구현
+  - `getBottomSpace`를 사용하여 marginBottom을 설정
+  - `TouchableOpacity`를 사용하여 TabButton을 구현
+  - `useState`를 사용하여 selectedTabIdx, setSelectedTabIdx를 생성
+  - isSelected, onPress, activeIconName, inactiveIconName를 각각 받아 TabButton 표시
   
 
 ## Style

@@ -1,15 +1,11 @@
 import React from 'react';
-import { Platform, ScrollView, View } from 'react-native';
-import { getBottomSpace } from 'react-native-iphone-x-helper';
+import { ScrollView, View } from 'react-native';
 import Margin from './Margin';
 import Profile from './Profile';
 
-const bottomSpace = getBottomSpace();
-console.log('bottomSpace', bottomSpace, Platform.OS)
-
 export default (props) => {
     return props.isOpened && (
-        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: bottomSpace }}>
+        <ScrollView showsVerticalScrollIndicator={false}>
             {props.data.map((item, index) => (
                 <View key={index}>
                     <Profile
