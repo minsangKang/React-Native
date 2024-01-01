@@ -8,7 +8,7 @@ const bottomSpace = getBottomSpace();
 console.log('bottomSpace', bottomSpace, Platform.OS)
 
 export default (props) => {
-    return (
+    return props.isOpened && (
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: bottomSpace }}>
             {props.data.map((item, index) => (
                 <View key={index}>

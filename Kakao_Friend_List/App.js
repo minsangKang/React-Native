@@ -10,13 +10,16 @@ import Margin from './src/Margin.js';
 import Division from './src/Division.js';
 import FriendSection from './src/FriendSection.js';
 import FriendList from './src/FriendList.js';
+import { useState } from 'react';
 
 const statusBarHeight = getStatusBarHeight(true);
 
 export default function App() {
+  const [isOpened, setIsOpened] = useState(false);
   const onPressArrow = () => {
-    console.log('clicked arrow');
+    setIsOpened(!isOpened)
   }
+
   const [fontsLoaded] = useFonts({
     "SpoqaHanSansNeo-Bold": require("./assets/fonts/SpoqaHanSansNeo-Bold.ttf"),
     "SpoqaHanSansNeo-Regular": require("./assets/fonts/SpoqaHanSansNeo-Regular.ttf"),
@@ -46,10 +49,12 @@ export default function App() {
       <FriendSection
         friendProfileLen={friendProfiles.length}
         onPressArrow={onPressArrow}
+        isOpened={isOpened}
       />
 
       <FriendList
         data={friendProfiles}
+        isOpened={isOpened}
       />
 
       <StatusBar style="auto" />
