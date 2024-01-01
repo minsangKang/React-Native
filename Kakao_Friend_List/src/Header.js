@@ -13,7 +13,7 @@ const IconButton = (props) => {
 const Header = () => {
     return (
         <View style={{ flexDirection: "row", justifyContent: "space-between", paddingVertical: 10 }}>
-            <Text style={{ fontSize: 22, fontWeight: "bold" }}>친구</Text>
+            <Text style={{ fontFamily: "SpoqaHanSansNeo-Bold", fontSize: 22 }}>친구</Text>
 
             <View style={{ flexDirection: "row" }}>
                 <IconButton name="search-outline" />

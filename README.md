@@ -189,6 +189,29 @@ link: [React Native를 활용한 빠르고 완성도 높은 앱 개발 with 21�
   - [react-native-iphone-x-helper](https://github.com/ptelad/react-native-iphone-x-helper) 라이브러리를 사용하여 padding 설정 방법 (deprecated)
   - [react-native-sfe-area-context](https://github.com/th3rdwave/react-native-safe-area-context) 라이브러리를 사용하는 방법
   - `React Native`의 SaveAreaView 컴포넌트를 사용하는 방법
+- 리스트 표시하는 방법
+  - ScrollView + map 함수 조합을 통해 구현
+  - scrollView의 contentContainerStyle: paddingBottom 값 설정을 통해 safeArea 위로 표시 설정
+  - 최상단 component에 key 값이 필요
+    ```javascript
+    export default (props) => {
+        return (
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: bottomSpace }}>
+                {props.data.map((item, index) => (
+                    <View key={index}>
+                        <Profile
+                            uri={item.uri}
+                            name={item.name}
+                            introduction={item.introduction}
+                        />
+                        <Margin height={13} />
+                    </View>
+                )
+                )}
+            </ScrollView>
+        )
+    }
+    ```
   
 
 ## Style
@@ -226,3 +249,4 @@ npx expo start
 - [Expo: Icons](https://docs.expo.dev/guides/icons/)
 - [@expo/vector-icons](https://icons.expo.fyi/Index)
 - [React Native - Layout with Flexbox](https://reactnative.dev/docs/flexbox)
+- [How to add custom fonts in React Native](https://blog.logrocket.com/adding-custom-fonts-react-native/)
