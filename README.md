@@ -219,6 +219,31 @@ link: [React Native를 활용한 빠르고 완성도 높은 앱 개발 with 21�
   - `TouchableOpacity`를 사용하여 TabButton을 구현
   - `useState`를 사용하여 selectedTabIdx, setSelectedTabIdx를 생성
   - isSelected, onPress, activeIconName, inactiveIconName를 각각 받아 TabButton 표시
+- [RN: FlatList](https://reactnative.dev/docs/flatlist)
+  - 화면에 표시되는 만큼 렌더링 작업이 이뤄진 최적화된 리스트 표시용 컴포넌트
+    ```javascript
+    const ListHeaderComponent = () => (
+      <Text>header</Text>
+    )
+    const renderItem = ({ item }) => (
+      <Text>{item.name}</Text>
+    )
+    const ListFooterComponent = () => (
+      <View style={{ height: 13 }} />
+    )
+
+    <FlatList
+      data={isOpened ? friendProfiles : []}
+      contentContainerStyle={{ marginHorizontal: 15 }}
+      stickyHeaderIndices={[0]} // ListHeaderComponent 고정
+      keyExtractor={(_, index) => index}
+      ItemSeparatorComponent={<View style={{ height: 13 }} />}
+      renderItem={renderItem}
+      ListHeaderComponent={ListHeaderComponent}
+      ListFooterComponent={ListFooterComponent}
+      showsVerticalScrollIndicator={false}
+    />
+    ```
   
 
 ## Style
@@ -257,3 +282,4 @@ npx expo start
 - [@expo/vector-icons](https://icons.expo.fyi/Index)
 - [React Native - Layout with Flexbox](https://reactnative.dev/docs/flexbox)
 - [How to add custom fonts in React Native](https://blog.logrocket.com/adding-custom-fonts-react-native/)
+- [React Native - FlatList](https://reactnative.dev/docs/flatlist)
