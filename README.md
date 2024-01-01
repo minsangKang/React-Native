@@ -187,7 +187,7 @@ link: [React Native를 활용한 빠르고 완성도 높은 앱 개발 with 21�
     ```
 - statusBarHeight
   - [react-native-iphone-x-helper](https://github.com/ptelad/react-native-iphone-x-helper) 라이브러리를 사용하여 padding 설정 방법 (deprecated)
-  - [react-native-sfe-area-context](https://www.npmjs.com/package/react-native-safe-area-context) 라이브러리를 사용하는 방법
+  - [react-native-sfe-area-context](https://github.com/th3rdwave/react-native-safe-area-context) 라이브러리를 사용하는 방법
   - `React Native`의 SaveAreaView 컴포넌트를 사용하는 방법
   
 
@@ -198,9 +198,10 @@ link: [React Native를 활용한 빠르고 완성도 높은 앱 개발 with 21�
 - `paddingHorizontal`: container의 컴포넌트간 좌우 padding 설정
 - `backgroundColor`: 배경색 설정
 - `flexDirection`: container의 방향 설정 (row: 가로, column: 세로)
-- `justifyContent`: 컴포넌트간 간격 설정 (space-between: 간격 max)
+- `justifyContent`: container의 컴포넌트간 정렬 설정 (space-between: 간격 max, flex-end: 하단부터 정렬)
 - `fontSize`: 폰트 사이즈
 - `fontWeight`: 폰트 굵기 (bold)
+- `flex`: 컴포넌트 크기 할당(1: 동일한 공간을 할당)
 
     
 ## Create RN Project (with Expo)
@@ -224,3 +225,4 @@ npx expo start
 - [React - Using the Effect Hook](https://ko.legacy.reactjs.org/docs/hooks-effect.html)
 - [Expo: Icons](https://docs.expo.dev/guides/icons/)
 - [@expo/vector-icons](https://icons.expo.fyi/Index)
+- [React Native - Layout with Flexbox](https://reactnative.dev/docs/flexbox)

@@ -1,17 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { getStatusBarHeight, getBottomSpace } from 'react-native-iphone-x-helper'
+import { getStatusBarHeight } from 'react-native-iphone-x-helper'
+// import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Header from './src/Header.js'
+import MyProfile from './src/MyProfile.js'
+import { myProfile } from './src/data.js';
+import Margin from './src/Margin.js';
 
 const statusBarHeight = getStatusBarHeight(true);
-const bottomSpace = getBottomSpace();
-// console.log(`${Platform.OS}: ${statusBarHeight}, ${bottomSpace}`)
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Header />
-      <StatusBar style="auto" />
+
+      <Margin height={10} />
+
+      <MyProfile
+        uri={myProfile.uri}
+        name={myProfile.name}
+        introduction={myProfile.introduction}
+      />
     </View>
   );
 }
@@ -19,7 +27,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: statusBarHeight,
     backgroundColor: '#fff',
+    paddingTop: statusBarHeight,
   },
 });
