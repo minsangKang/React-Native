@@ -88,103 +88,119 @@ link: [React Native를 활용한 빠르고 완성도 높은 앱 개발 with 21�
 
     export default Component;
     ```
-  - React: 컴포넌트 생명주기 (class)
-    - componentDidMount: 단 한번만 실행, 컴포넌트 생성 이후 (constructor: 컴포넌트 생성자, render: 컴포넌트 렌더링, 첫 렌더링 이후 불림)
-    - componentDidUpdate: props, 또는 state가 변경되어 render 작업이 끝났을 때, 업데이트 이전 상태값을 알 수 있다.
-    - componentWillUnmount: 컴포넌트가 소멸되기 직전, didMount에서 등록한 이벤트를 제거
-      ```javascript
-      import React from "react";
-      import { View, Text, Button } from "react-native";
+- React: 컴포넌트 생명주기 (class)
+  - `componentDidMount`: 단 한번만 실행, 컴포넌트 생성 이후 (constructor: 컴포넌트 생성자, render: 컴포넌트 렌더링, 첫 렌더링 이후 불림)
+  - `componentDidUpdate`: props, 또는 state가 변경되어 render 작업이 끝났을 때, 업데이트 이전 상태값을 알 수 있다.
+  - `componentWillUnmount`: 컴포넌트가 소멸되기 직전, didMount에서 등록한 이벤트를 제거
+    ```javascript
+    import React from "react";
+    import { View, Text, Button } from "react-native";
 
-      class Component extends React.Component {
-          constructor(props) {
-              console.log("constructor");
-              super(props);
-              this.state = {
-                  count: 0,
-              };
-          }
+    class Component extends React.Component {
+        constructor(props) {
+            console.log("constructor");
+            super(props);
+            this.state = {
+                count: 0,
+            };
+        }
 
-          componentDidMount() {
-              console.log("didMount");
-          }
+        componentDidMount() {
+            console.log("didMount");
+        }
 
-          componentDidUpdate(prevProps, prevState) {
-              console.log("didUpdate", prevState);
-          }
+        componentDidUpdate(prevProps, prevState) {
+            console.log("didUpdate", prevState);
+        }
 
-          componentWillUnmount() {
-              console.log("componentWillUnmount");
-          }
+        componentWillUnmount() {
+            console.log("componentWillUnmount");
+        }
 
-          render() {
-              console.log("render");
-              return (
-                  <View style={{ alignItems: "center" }}>
-                      <Text>You clicked {this.state.count} times</Text>
-                      <Button
-                          title="Click me"
-                          onPress={() => this.setState({ count: this.state.count + 1 })}
-                      />
-                  </View>
-              );
-          }
-      }
+        render() {
+            console.log("render");
+            return (
+                <View style={{ alignItems: "center" }}>
+                    <Text>You clicked {this.state.count} times</Text>
+                    <Button
+                        title="Click me"
+                        onPress={() => this.setState({ count: this.state.count + 1 })}
+                    />
+                </View>
+            );
+        }
+    }
 
-      export default Component;
-      // constructor -> render -> didMount
-      // render -> didUpdate {"count": 0}
-      // componentWillUnmount
-      ```
-  - React: 컴포넌트 생명주기 (func - useEffect)
-    - 함수형 컴포넌트와 달리 constructor, render 및 didMount, willUnmount 부분이 없다.
-    - useEffect를 통해 useState의 변화된 값을 수신받아 didUpdate 역할을 할 수 있다.
-    - useEffect로 빈 값 설정을 통해 didMount 역할을 할 수 있다.
-      ```javascript
-      import React, { useEffect, useState } from "react";
-      import { View, Text, Button, TextInput, Switch, ActivityIndicator } from "react-native";
+    export default Component;
+    // constructor -> render -> didMount
+    // render -> didUpdate {"count": 0}
+    // componentWillUnmount
+    ```
+- React: 컴포넌트 생명주기 (func - useEffect)
+  - 함수형 컴포넌트와 달리 constructor, render 및 didMount, willUnmount 부분이 없다.
+  - useEffect를 통해 useState의 변화된 값을 수신받아 didUpdate 역할을 할 수 있다.
+  - useEffect로 빈 값 설정을 통해 didMount 역할을 할 수 있다.
+    ```javascript
+    import React, { useEffect, useState } from "react";
+    import { View, Text, Button, TextInput, Switch, ActivityIndicator } from "react-native";
 
-      const Component = () => {
-          const [count, setCount] = useState(0);
+    const Component = () => {
+        const [count, setCount] = useState(0);
 
-          useEffect(() => {
-              console.log("didMount");
-          }, []);
+        useEffect(() => {
+            console.log("didMount");
+        }, []);
 
-          useEffect(() => {
-              console.log("didUpdate - count", count);
-          }, [count]);
+        useEffect(() => {
+            console.log("didUpdate - count", count);
+        }, [count]);
 
-          return (
-              <View style={{ alignItems: "center" }}>
-                  <Text>You clicked {count} times</Text>
-                  <Button
-                      title="Click me" 
-                      onPress={() => setCount(count + 1)}
-                  />
-              </View>
-          );
-      };
+        return (
+            <View style={{ alignItems: "center" }}>
+                <Text>You clicked {count} times</Text>
+                <Button
+                    title="Click me" 
+                    onPress={() => setCount(count + 1)}
+                />
+            </View>
+        );
+    };
 
-      export default Component;
-      // didMount -> didUpdate - count 0
-      // didUpdate - count 1
-      ```
-  - Custom Hook 만들기
-    - 반복적으로 사용되는 useState 생성 부분을 컴포넌트화
-    - 컴포넌트 이름이 'use'로 시작해야 한다.
-      ```javascript
-      const useInput = (initialValue) => {
-          const [value, setValue] = useState(initialValue);
-          const resetValue = () => setValue(initialValue);
+    export default Component;
+    // didMount -> didUpdate - count 0
+    // didUpdate - count 1
+    ```
+- Custom Hook 만들기
+  - 반복적으로 사용되는 useState 생성 부분을 컴포넌트화
+  - 컴포넌트 이름이 'use'로 시작해야 한다.
+    ```javascript
+    const useInput = (initialValue) => {
+        const [value, setValue] = useState(initialValue);
+        const resetValue = () => setValue(initialValue);
 
-          return {
-              value,
-              setValue,
-              resetValue
-          }
-      }
-      ```
+        return {
+            value,
+            setValue,
+            resetValue
+        }
+    }
+    ```
+- statusBarHeight
+  - [react-native-iphone-x-helper](https://github.com/ptelad/react-native-iphone-x-helper) 라이브러리를 사용하여 padding 설정 방법 (deprecated)
+  - [react-native-sfe-area-context](https://www.npmjs.com/package/react-native-safe-area-context) 라이브러리를 사용하는 방법
+  - `React Native`의 SaveAreaView 컴포넌트를 사용하는 방법
+  
+
+## Style
+- `paddingTop`: 상단 padding 설정
+- `paddingBottom`: 하단 padding 설정
+- `paddingVertical`: 상하단 padding 설정
+- `paddingHorizontal`: container의 컴포넌트간 좌우 padding 설정
+- `backgroundColor`: 배경색 설정
+- `flexDirection`: container의 방향 설정 (row: 가로, column: 세로)
+- `justifyContent`: 컴포넌트간 간격 설정 (space-between: 간격 max)
+- `fontSize`: 폰트 사이즈
+- `fontWeight`: 폰트 굵기 (bold)
 
     
 ## Create RN Project (with Expo)
@@ -206,3 +222,5 @@ npx expo start
 - [React - Components & Props](https://ko.legacy.reactjs.org/docs/components-and-props.html)
 - [React - State](https://reactnative.dev/docs/intro-react#state)
 - [React - Using the Effect Hook](https://ko.legacy.reactjs.org/docs/hooks-effect.html)
+- [Expo: Icons](https://docs.expo.dev/guides/icons/)
+- [@expo/vector-icons](https://icons.expo.fyi/Index)
