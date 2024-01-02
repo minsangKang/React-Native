@@ -190,7 +190,7 @@ link: [React Native를 활용한 빠르고 완성도 높은 앱 개발 with 21�
   - [react-native-sfe-area-context](https://github.com/th3rdwave/react-native-safe-area-context) 라이브러리를 사용하는 방법
   - `React Native`의 SaveAreaView 컴포넌트를 사용하는 방법
 - 터치가능한 UI
-  - React Native: TouchableOpacity 컴포넌트 사용
+  - React Native: `TouchableOpacity` 컴포넌트 사용
 - 리스트 표시하는 방법
   - ScrollView + map 함수 조합을 통해 구현
   - scrollView의 contentContainerStyle: paddingBottom 값 설정을 통해 safeArea 위로 표시 설정
@@ -244,6 +244,29 @@ link: [React Native를 활용한 빠르고 완성도 높은 앱 개발 with 21�
       showsVerticalScrollIndicator={false}
     />
     ```
+- [RN: hitSlop](https://reactnative.dev/docs/touchablewithoutfeedback#hitslop)
+  - margin, padding 없이 `TouchableOpacity` 영역을 넓여줄 수 있다.
+    ```javascript
+    <TouchableOpacity
+        style={{ paddingHorizontal: 6 }}
+        hitSlop={{ top: 15, bottom: 15 }}
+    >
+        <Ionicons name={name} size={24} color="black" />
+    </TouchableOpacity>
+    ```
+- [Styled Components](https://styled-components.com/docs/basics#react-native)
+  - style의 경우 inline, 그리고 sheeStyleSheet를 통해 구현할 수 있다.
+  - 추가적으로 Styled Components를 사용하여 style이 적용된 컴포넌트를 사용하는 방법도 있다.
+    ```javascript
+    const StyledView = styled.View`
+      flexDirection: row;
+    `;
+
+    <StyledView>
+      <Text>hello</Text>
+      <Text>world</Text>
+    </StyledView>
+    ```
   
 
 ## Style
@@ -283,3 +306,5 @@ npx expo start
 - [React Native - Layout with Flexbox](https://reactnative.dev/docs/flexbox)
 - [How to add custom fonts in React Native](https://blog.logrocket.com/adding-custom-fonts-react-native/)
 - [React Native - FlatList](https://reactnative.dev/docs/flatlist)
+- [React Native - hitSlop](https://reactnative.dev/docs/touchablewithoutfeedback#hitslop)
+- [Styled Components](https://styled-components.com/docs/basics#react-native)
